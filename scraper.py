@@ -15,11 +15,13 @@ driver.get(url)
 
 username = driver.find_element_by_id("login_username")
 username.clear()
-username.send_keys("ayushbishnoi@live.com")
+##Type email below 
+username.send_keys("ENTER EMAIL ADDRESS HERE")
 
 password = driver.find_element_by_id("login_password")
 password.clear()
-password.send_keys("Ayush12345")
+##Typs password below
+password.send_keys("ENTER PASSWORD HERE")
 
 driver.find_element_by_id("static-login-btn").click()
 time.sleep(5)
