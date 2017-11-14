@@ -1,3 +1,27 @@
+usernameinput="USERNAME" 					#ENTER USERNAME HERE;
+passwordinput="PASSWORD" 					#ENTER PASSWORD HERE;
+browserinput=1							#ENTER 1 for Firefox, 2 for Chrome;
+playlistinput="Starred Songs"					#ENTER playlist name;
+
+def choice():
+	loginchoice=1													
+	if(loginchoice==1):
+		loginuserpass()
+	if(loginchoice==2):
+		loginfb()
+
+def loginuserpass():
+	username = driver.find_element_by_id("login_username")		
+	username.clear()
+	username.send_keys(usernameinput)						
+	password = driver.find_element_by_id("login_password")
+	password.clear()
+	password.send_keys(passwordinput)						
+	driver.find_element_by_id("static-login-btn").click()
+
+def loginfb():
+	driver.find_element_by_class_name("btn.fb.large").click()
+
 ##LOGIN
 import time
 import os
@@ -10,28 +34,21 @@ from selenium.webdriver.common.action_chains import ActionChains
 import spotdl
 
 url = "https://www.saavn.com/login.php?action=login"
-driver = webdriver.Firefox(executable_path=r'geckodriver.exe')
+if(browserinput==1):
+	driver = webdriver.Firefox(executable_path=r'geckodriver.exe')
+else:
+	driver= webdriver.Chrome(executable_path=r'chromedriver.exe')
 driver.get(url)
-
-username = driver.find_element_by_id("login_username")
-username.clear()
-##Type email below 
-username.send_keys("ENTER EMAIL ADDRESS HERE")
-
-password = driver.find_element_by_id("login_password")
-password.clear()
-##Typs password below
-password.send_keys("ENTER PASSWORD HERE")
-
-driver.find_element_by_id("static-login-btn").click()
-time.sleep(5)
+choice()
 
 ##Home to playlist
+wait1 = WebDriverWait(driver, 10)
+music = wait1.until(EC.element_to_be_clickable((By.ID,'my-music')))
 wait = WebDriverWait(driver, 10)
 download_menu = driver.find_element_by_id("my-music")
 action = ActionChains(driver)
 action.move_to_element(download_menu).perform()
-documents = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "Starred Songs")))
+documents = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, playlistinput)))
 documents.click()
 
 ##Scrape song names
