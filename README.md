@@ -23,11 +23,17 @@ Assuming you have Python 3 ([preferably v3.6 or above to stay away from Unicode 
 ## Instructions for Downloading Songs
 
 -Open file scraper.py, in a text editor:
+
 -Modify the first four lines;
+
 --Email and password field to match your Saavn credentials;
+
 --List name from starred songs to your playlist (if required);
+
 --Firefox to Chrome (if required);
+
 -Save and run in cmd using "python scraper.py"
+
 -Don't touch your mouse or keyboard till the starred songs pages appears in the opened firefox/chrome window, the window may seem unresponsive, after the songs are listed you can check progress in the opened cmd window.
 
 ## Disclaimer
