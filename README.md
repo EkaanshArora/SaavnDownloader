@@ -1,4 +1,5 @@
 # SaavnDownloader
+Saavn changed their website, this tool does not work anymore, I'll have to update the tool for the new webpage, not something I'm working on currently.
 - Downloads songs from YouTube in an MP3 format by using Saavn's stored music.
 - Automatically fixes song's meta-tags.
 - Works straight out of the box and does not require to generate or mess with your API keys.
